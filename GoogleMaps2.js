@@ -1,14 +1,14 @@
 var map;
 var places = [{
-    name: "Seth's Current House",
-    windowtext: "This is the house I currently live in.",
+    name: "Old Home",
+    windowtext: "I used to live there.",
     cords: {
         lat: 35.626017,
         lng: -92.245208
     }}, 
     {
-    name: "Seth's Old House",
-    windowtext: "This is the house I USED to live in.",
+    name: "Current Home",
+    windowtext: "I currently live here.",
     cords: {
         lat: 35.627849,
         lng: -92.239511
@@ -175,7 +175,8 @@ function initMap() {
         return new google.maps.Marker({
             position: cord,
             map: map,
-            title: 'Hello World!'
+            title: 'Hello World!',
+            icon: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png'
         });
     }
     
@@ -187,37 +188,40 @@ function initMap() {
     
     var markerarray = [marker0, marker1, marker2, marker3, marker4];
     
+    marker1.setIcon('http://maps.google.com/mapfiles/ms/icons/red-dot.png')
+    
     marker0.addListener("click", function(){
             var infowindow = new google.maps.InfoWindow({
-                content: places[0].windowtext + stringstring
+                
+                content: '<br>' + '<h1>' + places[0].name + '</h1>' + '<br>' + '<h3>' + places[0].windowtext + '</h3>' + stringstring
             });
             infowindow.open(map, marker0);
         });
     
     marker1.addListener("click", function(){
             var infowindow = new google.maps.InfoWindow({
-                content: places[1].windowtext + stringstring
+                content: '<br>' + '<h1>' + places[1].name + '</h1>' + '<br>' + '<h3>' + places[1].windowtext + '</h3>' + stringstring
             });
             infowindow.open(map, marker1);
         });
     
     marker2.addListener("click", function(){
             var infowindow = new google.maps.InfoWindow({
-                content: places[2].windowtext + stringstring
+                content: '<br>' + '<h1>' + places[2].name + '</h1>' + '<br>' + '<h3>' + places[2].windowtext + '</h3>' + stringstring
             });
             infowindow.open(map, marker2);
         });
     
     marker3.addListener("click", function(){
             var infowindow = new google.maps.InfoWindow({
-                content: places[3].windowtext + stringstring
+                content: '<br>' + '<h1>' + places[3].name + '</h1>' + '<br>' + '<h3>' + places[3].windowtext + '</h3>' + stringstring
             });
             infowindow.open(map, marker3);
         });
     
     marker4.addListener("click", function(){
             var infowindow = new google.maps.InfoWindow({
-                content: places[4].windowtext + stringstring
+                content: '<br>' + '<h1>' + places[4].name + '</h1>' + '<br>' + '<h3>' + places[4].windowtext + '</h3>' + stringstring
             });
             infowindow.open(map, marker4);
         });

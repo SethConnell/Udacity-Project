@@ -1,5 +1,6 @@
-var vm = {
-    monkey: ko.observable()
+var ViewModel = {
+    monkey: ko.observable(),
+    
 };
-vm.monkey("Created by Seth J. Connell");
-ko.applyBindings(vm);
+ViewModel.monkey("Created by Seth J. Connell");
+ko.applyBindings(ViewModel);
