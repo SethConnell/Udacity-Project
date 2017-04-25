@@ -34,3 +34,41 @@ header {
     font-size: 25px;
     
 }
+
+.results {
+    display: block;
+    width: 40%;
+    text-align: center;
+    text-decoration-style: dotted;
+    color: #1f2835
+}
+
+.buttonholder {
+    margin-left: 10%;
+}
+
+button {
+    background-color: #1f2835;
+    color: white;
+    width: 10%;
+    height: 5%;
+}
+
+button:hover {
+    background-color: white;
+    color: #1f2835;
+}
+
+.results:hover {
+    background-color: #1f2835;
+    color: white;
+}
+
+.ad {
+    margin-left: 8%;
+    height: 100px;
+    width: 300px;
+    border-color: #21ce99;
+    background-color: #21ce99;
+    color: #fff;
+}

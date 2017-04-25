@@ -3,6 +3,7 @@
 <head>
     <link rel="stylesheet" type="text/css" href="styles.css">
     <title>Neighborhood Map</title>
+    <script src="jquery.js"></script>
 </head>
 
 <body>
@@ -11,10 +12,15 @@
     <script src="GoogleMaps2.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDtdgUhbRG_a67PJ6qNvc-XQ3gqI4R_U0g&callback=initMap"
     async defer></script>
-    <p id = "search">Name <input></p>
+    <p id = "search">Search <input data-bind="textInput: searchterm, valueUpdate: 'afterkeydown'"></p>
+    <div class = "buttonholder">
+        <button id = "button1" data-bind="click: model.reset">Reset</button>
+        <button id = "button2" data-bind="click: model.filter">Search</button>
+    </div>
+    <br>
+    <div id = "results"></div>
     <script src="knockout.js"></script>
     <script src="helper.js"></script>
 </body>
-
 </html>
 
