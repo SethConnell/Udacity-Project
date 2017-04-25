@@ -3,7 +3,7 @@ var ViewModel = {
     init: function() {
         for (var i = 0; i < 5; i++) {
             var names = String(this.places[i].name);
-            $("#results").append("<li id ='" + i + "'" + "class = 'results'>" + names + "</li>");
+            view.appendContent("#results", "<li id ='" + i + "'" + "class = 'results'>" + names + "</li>");
         }
         this.bindClicks();
     },
@@ -46,19 +46,19 @@ var ViewModel = {
         }}],
     bindClicks: function() {
         $("#0").click(function() {
-            markerarray[0].setIcon('http://maps.google.com/mapfiles/ms/icons/pink-dot.png');
+            view.setIcon(markerarray, 0, 'http://maps.google.com/mapfiles/ms/icons/pink-dot.png');
         })
         $("#1").click(function() {
-            markerarray[1].setIcon('http://maps.google.com/mapfiles/ms/icons/pink-dot.png');
+            view.setIcon(markerarray, 1, 'http://maps.google.com/mapfiles/ms/icons/pink-dot.png');
         })
         $("#2").click(function() {
-            markerarray[2].setIcon('http://maps.google.com/mapfiles/ms/icons/pink-dot.png');
+            view.setIcon(markerarray, 2, 'http://maps.google.com/mapfiles/ms/icons/pink-dot.png');
         })
         $("#3").click(function() {
-            markerarray[3].setIcon('http://maps.google.com/mapfiles/ms/icons/pink-dot.png');
+            view.setIcon(markerarray, 3, 'http://maps.google.com/mapfiles/ms/icons/pink-dot.png');
         })
         $("#4").click(function() {
-            markerarray[4].setIcon('http://maps.google.com/mapfiles/ms/icons/pink-dot.png');
+            view.setIcon(markerarray, 4, 'http://maps.google.com/mapfiles/ms/icons/pink-dot.png');
         })
     },
     searchitem: function(x) {
@@ -67,7 +67,7 @@ var ViewModel = {
             var names = String(this.places[i].name);
             var lowercasenames = names.toLowerCase();
             if (lowercasenames.includes(x.toLowerCase())) {
-                $("#results").append("<li id ='" + i + "'" + "class = 'results'>" + names + "</li>");
+                view.appendContent("#results", "<li id ='" + i + "'" + "class = 'results'>" + names + "</li>");
             }
         }
         this.bindClicks();
@@ -80,13 +80,23 @@ var ViewModel = {
     },
     reset: function() {
         for (var i = 0; i < markerarray.length; i++) {
-            markerarray[i].setIcon('http://maps.google.com/mapfiles/ms/icons/red-dot.png');
-            $("#results").empty();
+            view.setIcon(markerarray, i, 'http://maps.google.com/mapfiles/ms/icons/red-dot.png');
+            view.emptyElement("#results");
         }
     }
 };
 
-var view = {};
+var view = {
+    appendContent: function(element, content) {
+        $(element).append(content)
+    },
+    emptyElement: function(element) {
+        $(element).empty();
+    },
+    setIcon: function(marker, index, color) {
+        marker[index].setIcon(color)
+    }
+};
 
 ko.applyBindings(ViewModel);
 ViewModel.init();
