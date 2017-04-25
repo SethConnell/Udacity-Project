@@ -2,7 +2,7 @@ html, body { height: 100%; width: 100%; margin: 0; }
 
 header {
     color: white;
-    font-family: cursive;
+    font-family: monospace;
     font-size: 40px;
     background-color: #1f2835;
     text-align: center;
@@ -62,13 +62,4 @@ button:hover {
 .results:hover {
     background-color: #1f2835;
     color: white;
-}
-
-.ad {
-    margin-left: 8%;
-    height: 100px;
-    width: 300px;
-    border-color: #21ce99;
-    background-color: #21ce99;
-    color: #fff;
 }
