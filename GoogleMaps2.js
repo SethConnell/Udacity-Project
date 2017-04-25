@@ -10,7 +10,7 @@ var map,
 var initMap = function() {
     try {
         map = new google.maps.Map(document.getElementById('map'), {
-            center: model.places[2].cords,
+            center: ViewModel.places[2].cords,
             zoom: 13,
             styles: [{
                     elementType: 'geometry',
@@ -151,11 +151,11 @@ var initMap = function() {
             })
         };
 
-        marker0 = createMarker(model.places[0].cords);
-        marker1 = createMarker(model.places[1].cords);
-        marker2 = createMarker(model.places[2].cords);
-        marker3 = createMarker(model.places[3].cords);
-        marker4 = createMarker(model.places[4].cords);
+        marker0 = createMarker(ViewModel.places[0].cords);
+        marker1 = createMarker(ViewModel.places[1].cords);
+        marker2 = createMarker(ViewModel.places[2].cords);
+        marker3 = createMarker(ViewModel.places[3].cords);
+        marker4 = createMarker(ViewModel.places[4].cords);
 
         markerarray = [marker0, marker1, marker2, marker3, marker4];
 
@@ -163,7 +163,7 @@ var initMap = function() {
                 marker0.setIcon('http://maps.google.com/mapfiles/ms/icons/green-dot.png');
                 var infowindow = new google.maps.InfoWindow({
 
-                    content: '<h1>' + model.places[0].name + '</h1>' + '<br>' + '<h3>' + model.places[0].windowtext + '</h3>' + moreInfo(model.places[0].state)
+                    content: '<h1>' + ViewModel.places[0].name + '</h1>' + '<br>' + '<h3>' + ViewModel.places[0].windowtext + '</h3>' + moreInfo(ViewModel.places[0].state)
                 });
                 infowindow.open(map, marker0);
             });
@@ -171,7 +171,7 @@ var initMap = function() {
         marker1.addListener("click", function(){
                 marker1.setIcon('http://maps.google.com/mapfiles/ms/icons/green-dot.png');
                 var infowindow = new google.maps.InfoWindow({
-                    content: '<h1>' + model.places[1].name + '</h1>' + '<br>' + '<h3>' + model.places[1].windowtext + '</h3>' + moreInfo(model.places[1].state)
+                    content: '<h1>' + ViewModel.places[1].name + '</h1>' + '<br>' + '<h3>' + ViewModel.places[1].windowtext + '</h3>' + moreInfo(ViewModel.places[1].state)
                 });
                 infowindow.open(map, marker1);
             });
@@ -179,7 +179,7 @@ var initMap = function() {
         marker2.addListener("click", function(){
                 marker2.setIcon('http://maps.google.com/mapfiles/ms/icons/green-dot.png');
                 var infowindow = new google.maps.InfoWindow({
-                    content: '<h1>' + model.places[2].name + '</h1>' + '<br>' + '<h3>' + model.places[2].windowtext + '</h3>' + moreInfo(model.places[2].state)
+                    content: '<h1>' + ViewModel.places[2].name + '</h1>' + '<br>' + '<h3>' + ViewModel.places[2].windowtext + '</h3>' + moreInfo(ViewModel.places[2].state)
                 });
                 infowindow.open(map, marker2);
             });
@@ -187,7 +187,7 @@ var initMap = function() {
         marker3.addListener("click", function(){
                 marker3.setIcon('http://maps.google.com/mapfiles/ms/icons/green-dot.png');
                 var infowindow = new google.maps.InfoWindow({
-                    content: '<h1>' + model.places[3].name + '</h1>' + '<br>' + '<h3>' + model.places[3].windowtext + '</h3>' + moreInfo(model.places[3].state)
+                    content: '<h1>' + ViewModel.places[3].name + '</h1>' + '<br>' + '<h3>' + ViewModel.places[3].windowtext + '</h3>' + moreInfo(ViewModel.places[3].state)
                 });
                 infowindow.open(map, marker3);
             });
@@ -195,7 +195,7 @@ var initMap = function() {
         marker4.addListener("click", function(){
                 marker4.setIcon('http://maps.google.com/mapfiles/ms/icons/green-dot.png');
                 var infowindow = new google.maps.InfoWindow({
-                    content: '<h1>' + model.places[4].name + '</h1>' + '<br>' + '<h3>' + model.places[4].windowtext + '</h3>' + moreInfo(model.places[4].state)
+                    content: '<h1>' + ViewModel.places[4].name + '</h1>' + '<br>' + '<h3>' + ViewModel.places[4].windowtext + '</h3>' + moreInfo(ViewModel.places[4].state)
                 });
                 infowindow.open(map, marker4);
         });

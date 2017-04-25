@@ -1,8 +1,5 @@
 var ViewModel = {
-    searchterm: ko.observable()
-};
-
-var model = {
+    searchterm: ko.observable(),
     init: function() {
         for (var i = 0; i < 5; i++) {
             var names = String(this.places[i].name);
@@ -76,7 +73,7 @@ var model = {
         this.bindClicks();
     },
     filter: function() {
-        model.searchitem(ViewModel.searchterm())
+        ViewModel.searchitem(ViewModel.searchterm())
     },
     searcharray: function(x) {
         ViewModel.listResults = ko.observable(x);
@@ -89,5 +86,7 @@ var model = {
     }
 };
 
+var view = {};
+
 ko.applyBindings(ViewModel);
-model.init();
+ViewModel.init();
