@@ -5,10 +5,10 @@ var map,
     marker2,
     marker3,
     marker4,
-    markerarray;
+    markerarray; // Defined a few variables.
 
-var initMap = function() {
-    try {
+var initMap = function() { //This function creates the Google Map.
+    try { // this code is tried. if there's an error, it's handled by the code at the bottom.
         map = new google.maps.Map(document.getElementById('map'), {
             center: ViewModel.places[2].cords,
             zoom: 13,
@@ -137,12 +137,12 @@ var initMap = function() {
                 }
             ]
         });
-        var moreInfo = function(state) {
+        var moreInfo = function(state) { // This function uses a State Maps API to show what state the location of a marker is in.
             var string = '<br>' + "(This location is in " + state + ")" + '<br>' + '<img id = "catpic" src="http://connell.systems/StateMapsAPI/' + state.toLowerCase() +'.jpg" alt="Sorry, this image is not available.">'
             return string;
         };
 
-        createMarker = function(cord) {
+        createMarker = function(cord) { // This function creates a marker for the Google Maps API.
             return new google.maps.Marker({
                 position: cord,
                 map: map,
@@ -155,11 +155,11 @@ var initMap = function() {
         marker1 = createMarker(ViewModel.places[1].cords);
         marker2 = createMarker(ViewModel.places[2].cords);
         marker3 = createMarker(ViewModel.places[3].cords);
-        marker4 = createMarker(ViewModel.places[4].cords);
+        marker4 = createMarker(ViewModel.places[4].cords); // Markers 0-4 are the names of the markers being defined to be used later.
 
-        markerarray = [marker0, marker1, marker2, marker3, marker4];
+        markerarray = [marker0, marker1, marker2, marker3, marker4]; // Array of markers.
 
-        marker0.addListener("click", function(){
+        marker0.addListener("click", function(){ // Adding listener to marker to see if it's clicked. If it IS clicked, then an infowindow opens up.
                 marker0.setIcon('http://maps.google.com/mapfiles/ms/icons/green-dot.png');
                 var infowindow = new google.maps.InfoWindow({
 
@@ -168,7 +168,7 @@ var initMap = function() {
                 infowindow.open(map, marker0);
             });
 
-        marker1.addListener("click", function(){
+        marker1.addListener("click", function(){ // Adding listener to marker to see if it's clicked. If it IS clicked, then an infowindow opens up.
                 marker1.setIcon('http://maps.google.com/mapfiles/ms/icons/green-dot.png');
                 var infowindow = new google.maps.InfoWindow({
                     content: '<h1>' + ViewModel.places[1].name + '</h1>' + '<br>' + '<h3>' + ViewModel.places[1].windowtext + '</h3>' + moreInfo(ViewModel.places[1].state)
@@ -176,7 +176,7 @@ var initMap = function() {
                 infowindow.open(map, marker1);
             });
 
-        marker2.addListener("click", function(){
+        marker2.addListener("click", function(){ // Adding listener to marker to see if it's clicked. If it IS clicked, then an infowindow opens up.
                 marker2.setIcon('http://maps.google.com/mapfiles/ms/icons/green-dot.png');
                 var infowindow = new google.maps.InfoWindow({
                     content: '<h1>' + ViewModel.places[2].name + '</h1>' + '<br>' + '<h3>' + ViewModel.places[2].windowtext + '</h3>' + moreInfo(ViewModel.places[2].state)
@@ -184,7 +184,7 @@ var initMap = function() {
                 infowindow.open(map, marker2);
             });
 
-        marker3.addListener("click", function(){
+        marker3.addListener("click", function(){ // Adding listener to marker to see if it's clicked. If it IS clicked, then an infowindow opens up.
                 marker3.setIcon('http://maps.google.com/mapfiles/ms/icons/green-dot.png');
                 var infowindow = new google.maps.InfoWindow({
                     content: '<h1>' + ViewModel.places[3].name + '</h1>' + '<br>' + '<h3>' + ViewModel.places[3].windowtext + '</h3>' + moreInfo(ViewModel.places[3].state)
@@ -192,7 +192,7 @@ var initMap = function() {
                 infowindow.open(map, marker3);
             });
 
-        marker4.addListener("click", function(){
+        marker4.addListener("click", function(){ // Adding listener to marker to see if it's clicked. If it IS clicked, then an infowindow opens up.
                 marker4.setIcon('http://maps.google.com/mapfiles/ms/icons/green-dot.png');
                 var infowindow = new google.maps.InfoWindow({
                     content: '<h1>' + ViewModel.places[4].name + '</h1>' + '<br>' + '<h3>' + ViewModel.places[4].windowtext + '</h3>' + moreInfo(ViewModel.places[4].state)
@@ -200,7 +200,7 @@ var initMap = function() {
                 infowindow.open(map, marker4);
         });
     }
-    catch(err) {
+    catch(err) { // if the code can't load, the user is alerted that there was an error.
         alert("Crap, there was an error: " + err);
     }
 };
