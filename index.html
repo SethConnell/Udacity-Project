@@ -2,26 +2,29 @@
 <html>
 <head>
     <meta name="viewport" content="width=500, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" href="styles.css">
     <title>Neighborhood Map</title>
-    <script src="jquery.js"></script>
+    <meta charset="utf-8">
 </head>
-
+    
 <body>
     <header>My Neighborhood</header>
     <div id="map"></div>
-    <script src="GoogleMaps.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDtdgUhbRG_a67PJ6qNvc-XQ3gqI4R_U0g&callback=initMap"
-    async defer></script>
     <p id = "search">Search <input data-bind="textInput: searchterm, valueUpdate: 'afterkeydown'"></p>
     <div class = "buttonholder">
         <button id = "button1" data-bind="click: reset">Reset</button>
         <button id = "button2" data-bind="click: filter">Search</button>
     </div>
     <br>
-    <div id = "results"></div>
+    <div id = "results" data-bind="foreach: places">
+        <li class = 'results' data-bind="text: name, click: function () {ViewModel.clickedItem($index()); }"></li>
+    </div>
+    <script src="jquery.js"></script>
     <script src="knockout.js"></script>
     <script src="helper.js"></script>
+    <script src="GoogleMaps.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDtdgUhbRG_a67PJ6qNvc-XQ3gqI4R_U0g&callback=initMap"
+    async defer></script>
 </body>
 </html>
 

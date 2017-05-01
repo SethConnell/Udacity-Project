@@ -7,6 +7,26 @@ var map,
     marker4,
     markerarray; // Defined a few variables.
 
+var getInfo = function(state) {
+    var string = "";
+    $.ajax({
+      type: 'GET',
+      url: 'https://api.duckduckgo.com/',
+      data: { q: state, format: 'json', pretty: 1 },
+      jsonpCallback: 'jsonp',
+      listLocation: "RelatedTopics",
+      dataType: 'text',
+      success: function (data) {
+        data = JSON.parse(data);
+        var abstractURL = data.AbstractURL;
+        var abstractSRC = data.AbstractSource;
+        console.log(abstractURL);
+        ViewModel.abstractInfo(abstractURL);
+    }})
+};
+
+
+
 var initMap = function() { //This function creates the Google Map.
     try { // this code is tried. if there's an error, it's handled by the code at the bottom.
         map = new google.maps.Map(document.getElementById('map'), {
