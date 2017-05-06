@@ -16,13 +16,16 @@ var getInfo = function(state) {
       jsonpCallback: 'jsonp',
       listLocation: "RelatedTopics",
       dataType: 'text',
-      success: function (data) {
+    }).then(function (data) {
         data = JSON.parse(data);
         var abstractURL = data.AbstractURL;
         var abstractSRC = data.AbstractSource;
+        string = abstractURL;
+        console.log(abstractSRC);
         console.log(abstractURL);
-        ViewModel.abstractInfo(abstractURL);
-    }})
+        string = "<a href = '" + abstractURL + "'>" + abstractSRC + "</a>"
+        ViewModel.abstractInfo(string);
+    });
 };
 
 
@@ -182,10 +185,27 @@ var initMap = function() { //This function creates the Google Map.
         marker0.addListener("click", function(){ // Adding listener to marker to see if it's clicked. If it IS clicked, then an infowindow opens up.
                 marker0.setIcon('http://maps.google.com/mapfiles/ms/icons/green-dot.png');
                 var infowindow = new google.maps.InfoWindow({
-
-                    content: '<h1>' + ViewModel.places[0].name + '</h1>' + '<br>' + '<h3>' + ViewModel.places[0].windowtext + '</h3>' + moreInfo(ViewModel.places[0].state)
+                    content: "<img style = 'width: 250px; height: 200px' src='loading.gif'>" 
                 });
                 infowindow.open(map, marker0);
+                 $.ajax({
+                      type: 'GET',
+                      url: 'https://api.duckduckgo.com/',
+                      data: { q: ViewModel.places[0].state, format: 'json', pretty: 1 },
+                      jsonpCallback: 'jsonp',
+                      listLocation: "RelatedTopics",
+                      dataType: 'text',
+                    }).then(function (data) {
+                        var string;
+                        data = JSON.parse(data);
+                        var abstractURL = data.AbstractURL;
+                        var abstractSRC = data.AbstractSource;
+                        string = abstractURL;
+                        console.log(abstractSRC);
+                        console.log(abstractURL);
+                        string = "<a href = '" + abstractURL + "'>" + abstractSRC + "</a>"
+                        infowindow.setContent(string);
+                    })
             });
 
         marker1.addListener("click", function(){ // Adding listener to marker to see if it's clicked. If it IS clicked, then an infowindow opens up.
