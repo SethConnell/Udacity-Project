@@ -11,20 +11,13 @@ var getInfo = function(state) {
     var string = "";
     $.ajax({
       type: 'GET',
-      url: 'https://api.duckduckgo.com/',
-      data: { q: state, format: 'json', pretty: 1 },
+      url: 'http://en.wikipedia.org/w/api.php?action=parse&format=json&prop=text&section=0&page=' + state,
       jsonpCallback: 'jsonp',
       listLocation: "RelatedTopics",
       dataType: 'text',
     }).then(function (data) {
         data = JSON.parse(data);
-        var abstractURL = data.AbstractURL;
-        var abstractSRC = data.AbstractSource;
-        string = abstractURL;
-        console.log(abstractSRC);
-        console.log(abstractURL);
-        string = "<a href = '" + abstractURL + "'>" + abstractSRC + "</a>"
-        ViewModel.abstractInfo(string);
+        ViewModel.abstractInfo(data);
     });
 };
 
@@ -183,62 +176,104 @@ var initMap = function() { //This function creates the Google Map.
         markerarray = [marker0, marker1, marker2, marker3, marker4]; // Array of markers.
 
         marker0.addListener("click", function(){ // Adding listener to marker to see if it's clicked. If it IS clicked, then an infowindow opens up.
-                marker0.setIcon('http://maps.google.com/mapfiles/ms/icons/green-dot.png');
+                marker0.setIcon('http://maps.google.com/mapfiles/ms/icons/pink-dot.png');
                 var infowindow = new google.maps.InfoWindow({
                     content: "<img style = 'width: 250px; height: 200px' src='loading.gif'>" 
                 });
                 infowindow.open(map, marker0);
                  $.ajax({
-                      type: 'GET',
-                      url: 'https://api.duckduckgo.com/',
-                      data: { q: ViewModel.places[0].state, format: 'json', pretty: 1 },
-                      jsonpCallback: 'jsonp',
-                      listLocation: "RelatedTopics",
-                      dataType: 'text',
-                    }).then(function (data) {
-                        var string;
-                        data = JSON.parse(data);
-                        var abstractURL = data.AbstractURL;
-                        var abstractSRC = data.AbstractSource;
-                        string = abstractURL;
-                        console.log(abstractSRC);
-                        console.log(abstractURL);
-                        string = "<a href = '" + abstractURL + "'>" + abstractSRC + "</a>"
-                        infowindow.setContent(string);
+                      type: "GET",
+                      url: "http://en.wikipedia.org/w/api.php?action=parse&format=json&prop=text&section=0&page=" + ViewModel.places[0].state + "&callback=?",
+                      contentType: "application/json; charset=utf-8",
+                      dataType: "json",
+                      success: (function (data) {
+                        var markup = data.parse.text["*"];
+                        var string = markup;
+                        var NewContent = "<h1>" + ViewModel.places[0].name+ "</h1>" + "<h2>" + ViewModel.places[0].windowtext + "</h2>" + "<br><h1>Info About " + ViewModel.places[0].state + " Via Wikipedia</h1>" + ViewModel.places[0].windowtext + "</h2>" + string;
+                        infowindow.setContent(NewContent);
                     })
+                });
             });
 
         marker1.addListener("click", function(){ // Adding listener to marker to see if it's clicked. If it IS clicked, then an infowindow opens up.
-                marker1.setIcon('http://maps.google.com/mapfiles/ms/icons/green-dot.png');
+                marker1.setIcon('http://maps.google.com/mapfiles/ms/icons/pink-dot.png');
                 var infowindow = new google.maps.InfoWindow({
-                    content: '<h1>' + ViewModel.places[1].name + '</h1>' + '<br>' + '<h3>' + ViewModel.places[1].windowtext + '</h3>' + moreInfo(ViewModel.places[1].state)
+                    content: "<img style = 'width: 250px; height: 200px' src='loading.gif'>" 
                 });
                 infowindow.open(map, marker1);
+                 $.ajax({
+                      type: "GET",
+                      url: "http://en.wikipedia.org/w/api.php?action=parse&format=json&prop=text&section=0&page=" + ViewModel.places[1].state + "&callback=?",
+                      contentType: "application/json; charset=utf-8",
+                      dataType: "json",
+                      success: (function (data) {
+                        var markup = data.parse.text["*"];
+                        var string = markup;
+                        var NewContent = "<h1>" + ViewModel.places[1].name+ "</h1>" + "<h2>" + ViewModel.places[1].windowtext + "</h2>" + "<br><h1>Info About " + ViewModel.places[1].state + " Via Wikipedia</h1>" + ViewModel.places[1].windowtext + "</h2>" + string;
+                        infowindow.setContent(NewContent);
+                    })
+                });
             });
 
-        marker2.addListener("click", function(){ // Adding listener to marker to see if it's clicked. If it IS clicked, then an infowindow opens up.
-                marker2.setIcon('http://maps.google.com/mapfiles/ms/icons/green-dot.png');
+       marker2.addListener("click", function(){ // Adding listener to marker to see if it's clicked. If it IS clicked, then an infowindow opens up.
+                marker2.setIcon('http://maps.google.com/mapfiles/ms/icons/pink-dot.png');
                 var infowindow = new google.maps.InfoWindow({
-                    content: '<h1>' + ViewModel.places[2].name + '</h1>' + '<br>' + '<h3>' + ViewModel.places[2].windowtext + '</h3>' + moreInfo(ViewModel.places[2].state)
+                    content: "<img style = 'width: 250px; height: 200px' src='loading.gif'>" 
                 });
                 infowindow.open(map, marker2);
+                 $.ajax({
+                      type: "GET",
+                      url: "http://en.wikipedia.org/w/api.php?action=parse&format=json&prop=text&section=0&page=" + ViewModel.places[2].state + "&callback=?",
+                      contentType: "application/json; charset=utf-8",
+                      dataType: "json",
+                      success: (function (data) {
+                        var markup = data.parse.text["*"];
+                        var string = markup;
+                        var NewContent = "<h1>" + ViewModel.places[2].name+ "</h1>" + "<h2>" + ViewModel.places[2].windowtext + "</h2>" + "<br><h1>Info About " + ViewModel.places[2].state + " Via Wikipedia</h1>" + ViewModel.places[2].windowtext + "</h2>" + string;
+                        infowindow.setContent(NewContent);
+                    })
+                });
             });
 
-        marker3.addListener("click", function(){ // Adding listener to marker to see if it's clicked. If it IS clicked, then an infowindow opens up.
-                marker3.setIcon('http://maps.google.com/mapfiles/ms/icons/green-dot.png');
+         marker3.addListener("click", function(){ // Adding listener to marker to see if it's clicked. If it IS clicked, then an infowindow opens up.
+                marker3.setIcon('http://maps.google.com/mapfiles/ms/icons/pink-dot.png');
                 var infowindow = new google.maps.InfoWindow({
-                    content: '<h1>' + ViewModel.places[3].name + '</h1>' + '<br>' + '<h3>' + ViewModel.places[3].windowtext + '</h3>' + moreInfo(ViewModel.places[3].state)
+                    content: "<img style = 'width: 250px; height: 200px' src='loading.gif'>" 
                 });
                 infowindow.open(map, marker3);
+                 $.ajax({
+                      type: "GET",
+                      url: "http://en.wikipedia.org/w/api.php?action=parse&format=json&prop=text&section=0&page=" + ViewModel.places[3].state + "&callback=?",
+                      contentType: "application/json; charset=utf-8",
+                      dataType: "json",
+                      success: (function (data) {
+                        var markup = data.parse.text["*"];
+                        var string = markup;
+                        var NewContent = "<h1>" + ViewModel.places[3].name+ "</h1>" + "<h2>" + ViewModel.places[3].windowtext + "</h2>" + "<br><h1>Info About " + ViewModel.places[3].state + " Via Wikipedia</h1>" + ViewModel.places[3].windowtext + "</h2>" + string;
+                        infowindow.setContent(NewContent);
+                    })
+                });
             });
 
-        marker4.addListener("click", function(){ // Adding listener to marker to see if it's clicked. If it IS clicked, then an infowindow opens up.
-                marker4.setIcon('http://maps.google.com/mapfiles/ms/icons/green-dot.png');
+         marker4.addListener("click", function(){ // Adding listener to marker to see if it's clicked. If it IS clicked, then an infowindow opens up.
+                marker4.setIcon('http://maps.google.com/mapfiles/ms/icons/pink-dot.png');
                 var infowindow = new google.maps.InfoWindow({
-                    content: '<h1>' + ViewModel.places[4].name + '</h1>' + '<br>' + '<h3>' + ViewModel.places[4].windowtext + '</h3>' + moreInfo(ViewModel.places[4].state)
+                    content: "<img style = 'width: 250px; height: 200px' src='loading.gif'>" 
                 });
-                infowindow.open(map, marker4);
-        });
+                infowindow.open(map, marker0);
+                 $.ajax({
+                      type: "GET",
+                      url: "http://en.wikipedia.org/w/api.php?action=parse&format=json&prop=text&section=0&page=" + ViewModel.places[4].state + "&callback=?",
+                      contentType: "application/json; charset=utf-8",
+                      dataType: "json",
+                      success: (function (data) {
+                        var markup = data.parse.text["*"];
+                        var string = markup;
+                        var NewContent = "<h1>" + ViewModel.places[4].name+ "</h1>" + "<h2>" + ViewModel.places[4].windowtext + "</h2>" + "<br><h1>Info About " + ViewModel.places[4].state + " Via Wikipedia</h1>" + ViewModel.places[4].windowtext + "</h2>" + string;
+                        infowindow.setContent(NewContent);
+                    })
+                });
+            });
     }
     catch(err) { // if the code can't load, the user is alerted that there was an error.
         alert("Crap, there was an error: " + err);
