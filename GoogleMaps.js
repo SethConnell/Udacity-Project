@@ -26,7 +26,7 @@ var getInfo = function(state) {
 var initMap = function() { //This function creates the Google Map.
     try { // this code is tried. if there's an error, it's handled by the code at the bottom.
         map = new google.maps.Map(document.getElementById('map'), {
-            center: ViewModel.places[2].cords,
+            center: model.places[2].cords,
             zoom: 13,
             styles: [{
                     elementType: 'geometry',
@@ -167,11 +167,11 @@ var initMap = function() { //This function creates the Google Map.
             })
         };
 
-        marker0 = createMarker(ViewModel.places[0].cords);
-        marker1 = createMarker(ViewModel.places[1].cords);
-        marker2 = createMarker(ViewModel.places[2].cords);
-        marker3 = createMarker(ViewModel.places[3].cords);
-        marker4 = createMarker(ViewModel.places[4].cords); // Markers 0-4 are the names of the markers being defined to be used later.
+        marker0 = createMarker(model.places[0].cords);
+        marker1 = createMarker(model.places[1].cords);
+        marker2 = createMarker(model.places[2].cords);
+        marker3 = createMarker(model.places[3].cords);
+        marker4 = createMarker(model.places[4].cords); // Markers 0-4 are the names of the markers being defined to be used later.
 
         markerarray = [marker0, marker1, marker2, marker3, marker4]; // Array of markers.
 
@@ -209,14 +209,14 @@ var marker0SetWindow = function(number) { // This function toggles marker0's Inf
     infowindow.open(map, marker0);
     $.ajax({
         type: "GET",
-        url: "http://en.wikipedia.org/w/api.php?action=parse&format=json&prop=text&section=0&page=" + ViewModel.places[0].state + "&callback=?",
+        url: "http://en.wikipedia.org/w/api.php?action=parse&format=json&prop=text&section=0&page=" + model.places[0].state + "&callback=?",
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: (function(data) {
             var markup = data.parse.text["*"];
             var string = markup;
             var string = string.replace(/<img[^>]*>/g, "");
-            var NewContent = "<h1>" + ViewModel.places[0].name + "</h1>" + "<h2>" + ViewModel.places[0].windowtext + "</h2>" + "<br><h1>Info About " + ViewModel.places[0].state + " Via Wikipedia</h1>" + ViewModel.places[0].windowtext + "</h2>" + string;
+            var NewContent = "<h1>" + model.places[0].name + "</h1>" + "<h2>" + model.places[0].windowtext + "</h2>" + "<br><h1>Info About " + model.places[0].state + " Via Wikipedia</h1>" + model.places[0].windowtext + "</h2>" + string;
             infowindow.setContent(NewContent);
         })
     });
@@ -231,14 +231,14 @@ var marker1SetWindow = function(number) { // This function toggles marker1's Inf
     infowindow.open(map, marker1);
     $.ajax({
         type: "GET",
-        url: "http://en.wikipedia.org/w/api.php?action=parse&format=json&prop=text&section=0&page=" + ViewModel.places[1].state + "&callback=?",
+        url: "http://en.wikipedia.org/w/api.php?action=parse&format=json&prop=text&section=0&page=" + model.places[1].state + "&callback=?",
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: (function(data) {
             var markup = data.parse.text["*"];
             var string = markup;
             var string = string.replace(/<img[^>]*>/g, "");
-            var NewContent = "<h1>" + ViewModel.places[1].name + "</h1>" + "<h2>" + ViewModel.places[1].windowtext + "</h2>" + "<br><h1>Info About " + ViewModel.places[1].state + " Via Wikipedia</h1>" + ViewModel.places[1].windowtext + "</h2>" + string;
+            var NewContent = "<h1>" + model.places[1].name + "</h1>" + "<h2>" + model.places[1].windowtext + "</h2>" + "<br><h1>Info About " + model.places[1].state + " Via Wikipedia</h1>" + model.places[1].windowtext + "</h2>" + string;
             infowindow.setContent(NewContent);
         })
     });
@@ -253,14 +253,14 @@ var marker2SetWindow = function(number) { // This function toggles marker2's Inf
     infowindow.open(map, marker2);
     $.ajax({
         type: "GET",
-        url: "http://en.wikipedia.org/w/api.php?action=parse&format=json&prop=text&section=0&page=" + ViewModel.places[2].state + "&callback=?",
+        url: "http://en.wikipedia.org/w/api.php?action=parse&format=json&prop=text&section=0&page=" + model.places[2].state + "&callback=?",
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: (function(data) {
             var markup = data.parse.text["*"];
             var string = markup;
             var string = string.replace(/<img[^>]*>/g, "");
-            var NewContent = "<h1>" + ViewModel.places[2].name + "</h1>" + "<h2>" + ViewModel.places[2].windowtext + "</h2>" + "<br><h1>Info About " + ViewModel.places[2].state + " Via Wikipedia</h1>" + ViewModel.places[2].windowtext + "</h2>" + string;
+            var NewContent = "<h1>" + model.places[2].name + "</h1>" + "<h2>" + model.places[2].windowtext + "</h2>" + "<br><h1>Info About " + model.places[2].state + " Via Wikipedia</h1>" + model.places[2].windowtext + "</h2>" + string;
             infowindow.setContent(NewContent);
         })
     });
@@ -275,14 +275,14 @@ var marker3SetWindow = function(number) { // This function toggles marker3's Inf
     infowindow.open(map, marker3);
     $.ajax({
         type: "GET",
-        url: "http://en.wikipedia.org/w/api.php?action=parse&format=json&prop=text&section=0&page=" + ViewModel.places[3].state + "&callback=?",
+        url: "http://en.wikipedia.org/w/api.php?action=parse&format=json&prop=text&section=0&page=" + model.places[3].state + "&callback=?",
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: (function(data) {
             var markup = data.parse.text["*"];
             var string = markup;
             var string = string.replace(/<img[^>]*>/g, "");
-            var NewContent = "<h1>" + ViewModel.places[3].name + "</h1>" + "<h2>" + ViewModel.places[3].windowtext + "</h2>" + "<br><h1>Info About " + ViewModel.places[3].state + " Via Wikipedia</h1>" + ViewModel.places[3].windowtext + "</h2>" + string;
+            var NewContent = "<h1>" + model.places[3].name + "</h1>" + "<h2>" + model.places[3].windowtext + "</h2>" + "<br><h1>Info About " + model.places[3].state + " Via Wikipedia</h1>" + model.places[3].windowtext + "</h2>" + string;
             infowindow.setContent(NewContent);
         })
     });
@@ -297,14 +297,14 @@ var marker4SetWindow = function(number) { // This function toggles marker4's Inf
     infowindow.open(map, marker4);
     $.ajax({
         type: "GET",
-        url: "http://en.wikipedia.org/w/api.php?action=parse&format=json&prop=text&section=0&page=" + ViewModel.places[4].state + "&callback=?",
+        url: "http://en.wikipedia.org/w/api.php?action=parse&format=json&prop=text&section=0&page=" + model.places[4].state + "&callback=?",
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: (function(data) {
             var markup = data.parse.text["*"];
             var string = markup;
             var string = string.replace(/<img[^>]*>/g, "");
-            var NewContent = "<h1>" + ViewModel.places[4].name + "</h1>" + "<h2>" + ViewModel.places[4].windowtext + "</h2>" + "<br><h1>Info About " + ViewModel.places[4].state + " Via Wikipedia</h1>" + ViewModel.places[4].windowtext + "</h2>" + string;
+            var NewContent = "<h1>" + model.places[4].name + "</h1>" + "<h2>" + model.places[4].windowtext + "</h2>" + "<br><h1>Info About " + model.places[4].state + " Via Wikipedia</h1>" + model.places[4].windowtext + "</h2>" + string;
             infowindow.setContent(NewContent);
         })
     });

@@ -11,12 +11,12 @@
 <body>
     <header>My Neighborhood</header>
     <div id="map"></div>
-    <p id="search"><input placeholder="Search…" data-bind="textInput: searchterm, valueUpdate: 'afterkeydown'" type="filter"></p>
+    <p id="search"><input id="searchbox" placeholder="Search…" data-bind="textInput: searchterm, valueUpdate: 'afterkeydown'" type="filter"></p>
     <div class="buttonholder">
         <button id="button2" data-bind="click: filter">Search</button>
     </div>
     <br>
-    <div id="results" data-bind="foreach: places">
+    <div id="results" data-bind="foreach: model.places">
         <li class='results' data-bind="text: name, click: function () {ViewModel.clickedItem($index()); }"></li>
     </div>
     <script src="jquery.js"></script>

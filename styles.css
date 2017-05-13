@@ -30,9 +30,13 @@ header {
 }
 
 #search {
-    padding-left: 10%;
     font-size: 25px;
-    
+    margin-left: 5%;
+}
+
+#searchbox {
+    width: 30%;
+    display: inline-block;
 }
 
 .results {
@@ -44,14 +48,14 @@ header {
 }
 
 .buttonholder {
-    margin-left: 10%;
+    width: 40%;
 }
 
 button {
     background-color: #1f2835;
     color: white;
-    width: 10%;
-    height: 5%;
+    width: 20%;
+    margin-left: 40%;
 }
 
 button:hover {
