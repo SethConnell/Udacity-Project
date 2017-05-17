@@ -1,4 +1,4 @@
-# Neighborhood Map Project 1.1
+# Neighborhood Map Project 1.2
 
 
 ## Getting Started
@@ -16,7 +16,7 @@ Web Browser.
 
 ### Installing and Running Website
 
-A step by step series of examples that tell you have to get a development env running
+A step by step series of examples that tell you have to get a development env running:
 
 Download and install code onto your computer.
 
@@ -27,7 +27,7 @@ Then, run index.html by clicking on it.
 
 * [KnockoutJS](http://knockoutjs.com/index.html) - The web framework used
 * [Google Maps API](https://developers.google.com/maps/) - Map API Used
-* [Connell Systems State Maps API](http://connell.systems/) - 3rd Party API Used
+* [Wikipedia API](http://en.wikipedia.org/w/api.php?) - 3rd Party API Used
 * [jQuery](http://jquery.com/) - Javascript Library Used
 
 ## Authors
@@ -39,3 +39,6 @@ Then, run index.html by clicking on it.
 * Hat tip to anyone who's code was used
 * Inspiration
 * etc
+
+## Quick Note:
+This was the final draft of the Neighborhood Map project for Udacity by Seth Connell. Seth is finally moving on to greater, better things in the world of programming. This was merely a step in the incredible journey of a beginner front-end developer.
