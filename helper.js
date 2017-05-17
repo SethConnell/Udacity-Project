@@ -103,12 +103,14 @@ var ViewModel = {
     },
     searchitem: function(x) { // This function resets the list, going through and appending each item to the list area of the page.
         this.reset();
+        ViewModel.names.removeAll()
         for (var i = 0; i < markerarray.length; i++) {
             var names = String(model.places[i].name);
             var lowercasenames = names.toLowerCase();
-            if (lowercasenames.includes(x.toLowerCase()) && (ViewModel.names().includes() != true)) {
+            if (lowercasenames.includes(x.toLowerCase())){
+                ViewModel.names.push(names);
+                view.setIcon(markerarray, i, 'http://maps.google.com/mapfiles/ms/icons/pink-dot.png');
             } else {
-                ViewModel.names.remove(names);
             }
         }
     },
