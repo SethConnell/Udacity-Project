@@ -192,6 +192,10 @@ var marker0SetWindow = function(number) { // This function toggles marker0's Inf
         content: "<img style = 'width: 250px; height: 200px' src='loading.gif'>"
     });
     infowindow.open(map, marker0);
+    var wikiRequestTimeout = setTimeout(function() {
+        var NewContent = "<h1>" + model.places[0].name + "</h1>" + "<h2>" + model.places[0].windowtext + "</h2>" + "<br><h1> Related Links Via Wikipedia Not Available</h1>";
+        infowindow.setContent(NewContent);
+    }, 8000);
     $.ajax({
         type: "GET",
         url: "http://en.wikipedia.org/w/api.php?action=parse&format=json&prop=text&section=0&page=" + model.places[0].name + "&callback=?",
@@ -204,6 +208,7 @@ var marker0SetWindow = function(number) { // This function toggles marker0's Inf
                 var string = string.replace(/<img[^>]*>/g, "");
                 var NewContent = "<h1>" + model.places[0].name + "</h1>" + "<h2>" + model.places[0].windowtext + "</h2>" + "<br><h1> Related Links Via Wikipedia</h1>"  + model.places[0].windowtext + "</h2>" + string;
                 infowindow.setContent(NewContent);
+                clearTimout(wikiRequestTimeout);
             }
             catch(err) {
                 var NewContent = "<h1>" + model.places[0].name + "</h1>" + "<h2>" + model.places[0].windowtext + "</h2>" + "<br><h1> Related Links Via Wikipedia Not Available</h1>";
@@ -220,6 +225,10 @@ var marker1SetWindow = function(number) { // This function toggles marker1's Inf
         content: "<img style = 'width: 200px; height: 200px' src='loading.gif'>"
     });
     infowindow.open(map, marker1);
+    var wikiRequestTimeout = setTimeout(function() {
+        var NewContent = "<h1>" + model.places[1].name + "</h1>" + "<h2>" + model.places[1].windowtext + "</h2>" + "<br><h1> Related Links Via Wikipedia Not Available</h1>";
+        infowindow.setContent(NewContent);
+    }, 8000);
     $.ajax({
         type: "GET",
         url: "http://en.wikipedia.org/w/api.php?action=parse&format=json&prop=text&section=0&page=" + model.places[1].name + "&callback=?",
@@ -232,6 +241,7 @@ var marker1SetWindow = function(number) { // This function toggles marker1's Inf
                 var string = string.replace(/<img[^>]*>/g, "");
                 var NewContent = "<h1>" + model.places[1].name + "</h1>" + "<h2>" + model.places[1].windowtext + "</h2>" + "<br><h1> Related Links Via Wikipedia</h1>" + model.places[1].windowtext + "</h2>" + string;
                 infowindow.setContent(NewContent);
+                clearTimout(wikiRequestTimeout);
             }
             catch(err) {
                 var NewContent = "<h1>" + model.places[1].name + "</h1>" + "<h2>" + model.places[1].windowtext + "</h2>" + "<br><h1> Related Links Via Wikipedia Not Available</h1>";
@@ -247,7 +257,12 @@ var marker2SetWindow = function(number) { // This function toggles marker2's Inf
     var infowindow = new google.maps.InfoWindow({
         content: "<img style = 'width: 250px; height: 200px' src='loading.gif'>"
     });
+    
     infowindow.open(map, marker2);
+    var wikiRequestTimeout = setTimeout(function() {
+        var NewContent = "<h1>" + model.places[2].name + "</h1>" + "<h2>" + model.places[2].windowtext + "</h2>" + "<br><h1> Related Links Via Wikipedia Not Available</h1>";
+        infowindow.setContent(NewContent);
+    }, 8000);
     $.ajax({
         type: "GET",
         url: "http://en.wikipedia.org/w/api.php?action=parse&format=json&prop=text&section=0&page=" + model.places[2].name + "&callback=?",
@@ -260,6 +275,7 @@ var marker2SetWindow = function(number) { // This function toggles marker2's Inf
                 var string = string.replace(/<img[^>]*>/g, "");
                 var NewContent = "<h1>" + model.places[2].name + "</h1>" + "<h2>" + model.places[2].windowtext + "</h2>" + "<br><h1> Related Links Via Wikipedia</h1>"  + model.places[2].windowtext + "</h2>" + string;
                 infowindow.setContent(NewContent);
+                clearTimout(wikiRequestTimeout);
             }
             catch(err) {
                 var NewContent = "<h1>" + model.places[2].name + "</h1>" + "<h2>" + model.places[2].windowtext + "</h2>" + "<br><h1> Related Links Via Wikipedia Not Available</h1>";
@@ -276,6 +292,10 @@ var marker3SetWindow = function(number) { // This function toggles marker3's Inf
         content: "<img style = 'width: 250px; height: 200px' src='loading.gif'>"
     });
     infowindow.open(map, marker3);
+    var wikiRequestTimeout = setTimeout(function() {
+        var NewContent = "<h1>" + model.places[3].name + "</h1>" + "<h2>" + model.places[3].windowtext + "</h2>" + "<br><h1> Related Links Via Wikipedia Not Available</h1>";
+        infowindow.setContent(NewContent);
+    }, 8000);
     $.ajax({
         type: "GET",
         url: "http://en.wikipedia.org/w/api.php?action=parse&format=json&prop=text&section=0&page=" + model.places[3].name + "&callback=?",
@@ -288,6 +308,7 @@ var marker3SetWindow = function(number) { // This function toggles marker3's Inf
                 var string = string.replace(/<img[^>]*>/g, "");
                 var NewContent = "<h1>" + model.places[3].name + "</h1>" + "<h2>" + model.places[3].windowtext + "</h2>" + "<br><h1> Related Links Via Wikipedia</h1>"  + model.places[3].windowtext + "</h2>" + string;
                 infowindow.setContent(NewContent);
+                clearTimout(wikiRequestTimeout);
             }
             catch(err) {
                 var NewContent = "<h1>" + model.places[3].name + "</h1>" + "<h2>" + model.places[3].windowtext + "</h2>" + "<br><h1> Related Links Via Wikipedia Not Available</h1>";
@@ -304,6 +325,10 @@ var marker4SetWindow = function(number) { // This function toggles marker4's Inf
         content: "<img style = 'width: 250px; height: 200px' src='loading.gif'>"
     });
     infowindow.open(map, marker4);
+    var wikiRequestTimeout = setTimeout(function() {
+        var NewContent = "<h1>" + model.places[4].name + "</h1>" + "<h2>" + model.places[4].windowtext + "</h2>" + "<br><h1> Related Links Via Wikipedia Not Available</h1>";
+        infowindow.setContent(NewContent);
+    }, 8000);
     $.ajax({
         type: "GET",
         url: "http://en.wikipedia.org/w/api.php?action=parse&format=json&prop=text&section=0&page=" + model.places[4].name + "&callback=?",
@@ -316,6 +341,7 @@ var marker4SetWindow = function(number) { // This function toggles marker4's Inf
                 var string = string.replace(/<img[^>]*>/g, "");
                 var NewContent = "<h1>" + model.places[4].name + "</h1>" + "<h2>" + model.places[4].windowtext + "</h2>" + "<br><h1> Related Links Via Wikipedia</h1>"  + model.places[4].windowtext + "</h2>" + string;
                 infowindow.setContent(NewContent);
+                clearTimout(wikiRequestTimeout);
             }
             catch(err) {
                 var NewContent = "<h1>" + model.places[4].name + "</h1>" + "<h2>" + model.places[4].windowtext + "</h2>" + "<br><h1> Related Links Via Wikipedia Not Available</h1>";
