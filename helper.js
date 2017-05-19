@@ -93,13 +93,28 @@ var ViewModel = {
     },
     searchitem: function(x) { // This function resets the list, filtering the search results to match the search term, x.
         this.reset();
-        ViewModel.names.removeAll()
+        ViewModel.names.removeAll();
+        setMapOnAll(null);
         for (var i = 0; i < markerarray.length; i++) { 
             var names = String(model.places[i].name);
             var lowercasenames = names.toLowerCase();
             if (lowercasenames.includes(x.toLowerCase())){
                 ViewModel.names.push(names);
-                view.setIcon(markerarray, i, 'http://maps.google.com/mapfiles/ms/icons/pink-dot.png');
+                if (i == 0) {
+                    marker0.setMap(map)
+                };
+                if (i == 1) {
+                    marker1.setMap(map)
+                };
+                if (i == 2) {
+                    marker2.setMap(map)
+                };
+                if (i == 3) {
+                    marker3.setMap(map)
+                };
+                if (i == 4) {
+                    marker4.setMap(map)
+                };
             } else {
             }
         }

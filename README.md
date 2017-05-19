@@ -1,5 +1,7 @@
 # Neighborhood Map Project 1.2
 
+# This web app is using wikipedia api to suggest links to users in a 3rd party API.
+
 
 ## Getting Started
 
