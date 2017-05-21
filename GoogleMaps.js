@@ -193,7 +193,7 @@ var marker0SetWindow = function(number) { // This function toggles marker0's Inf
     });
     infowindow.open(map, marker0);
     var wikiRequestTimeout = setTimeout(function() {
-        var NewContent = "<h1>" + model.places[0].name + "</h1>" + "<h2>" + model.places[0].windowtext + "</h2>" + "<br><h1> Related Links Via Wikipedia Not Available</h1>";
+        var NewContent = "<h1>" + model.places[0].name + "</h1>" + "<h2>" + model.places[0].windowtext + "</h2>" + "<br><h1> Related Data Via Wikipedia Not Available</h1>";
         infowindow.setContent(NewContent);
     }, 8000); // wikiRequestTimeout tells the user if there has been an error with the API.
     $.ajax({
@@ -206,11 +206,16 @@ var marker0SetWindow = function(number) { // This function toggles marker0's Inf
                 var markup = data.parse.text["*"];
                 var string = markup;
                 var string = string.replace(/<img[^>]*>/g, "");
-                var NewContent = "<h1>" + model.places[0].name + "</h1>" + "<h2>" + model.places[0].windowtext + "</h2>" + "<br><h1> Related Links Via Wikipedia</h1>" + model.places[0].windowtext + "</h2>" + string;
+                string = string.replace("/wiki", "https://en.wikipedia.org/wiki");
+                if (string.length > 300) {
+                    string.replace(/<a\b[^>]*>(.*?)<\/a>/i,"");
+                }
+                var NewContent = "<h1>" + model.places[0].name + "</h1>" + "<h2>" + model.places[0].windowtext + "</h2>" + "<br><h1> Related Data Via Wikipedia</h1>" + "</h2>" + string;
                 infowindow.setContent(NewContent);
                 clearTimeout(wikiRequestTimeout);
+                console.log(string);
             } catch (err) {
-                var NewContent = "<h1>" + model.places[0].name + "</h1>" + "<h2>" + model.places[0].windowtext + "</h2>" + "<br><h1> No related links on Wikipedia</h1>";
+                var NewContent = "<h1>" + model.places[0].name + "</h1>" + "<h2>" + model.places[0].windowtext + "</h2>" + "<br><h1> No Related Data on Wikipedia</h1>";
                 infowindow.setContent(NewContent);
             };
         })
@@ -225,7 +230,7 @@ var marker1SetWindow = function(number) { // This function toggles marker1's Inf
     });
     infowindow.open(map, marker1);
     var wikiRequestTimeout = setTimeout(function() {
-        var NewContent = "<h1>" + model.places[1].name + "</h1>" + "<h2>" + model.places[1].windowtext + "</h2>" + "<br><h1> Related Links Via Wikipedia Not Available</h1>";
+        var NewContent = "<h1>" + model.places[1].name + "</h1>" + "<h2>" + model.places[1].windowtext + "</h2>" + "<br><h1> Related Data Via Wikipedia Not Available</h1>";
         infowindow.setContent(NewContent);
     }, 8000); // wikiRequestTimeout tells the user if there has been an error with the API.
     $.ajax({
@@ -238,11 +243,16 @@ var marker1SetWindow = function(number) { // This function toggles marker1's Inf
                 var markup = data.parse.text["*"];
                 var string = markup;
                 var string = string.replace(/<img[^>]*>/g, "");
-                var NewContent = "<h1>" + model.places[1].name + "</h1>" + "<h2>" + model.places[1].windowtext + "</h2>" + "<br><h1> Related Links Via Wikipedia</h1>" + model.places[1].windowtext + "</h2>" + string;
+                string = string.replace("/wiki", "https://en.wikipedia.org/wiki");
+                if (string.length > 300) {
+                    string.replace(/<a\b[^>]*>(.*?)<\/a>/i,"");
+                }
+                var NewContent = "<h1>" + model.places[1].name + "</h1>" + "<h2>" + model.places[1].windowtext + "</h2>" + "<br><h1> Related Data Via Wikipedia</h1>" + "</h2>" + string;
                 infowindow.setContent(NewContent);
                 clearTimeout(wikiRequestTimeout);
+                console.log(string);
             } catch (err) {
-                var NewContent = "<h1>" + model.places[1].name + "</h1>" + "<h2>" + model.places[1].windowtext + "</h2>" + "<br><h1> No related links on Wikipedia</h1>";
+                var NewContent = "<h1>" + model.places[1].name + "</h1>" + "<h2>" + model.places[1].windowtext + "</h2>" + "<br><h1> No Related Data on Wikipedia</h1>";
                 infowindow.setContent(NewContent);
             }
         })
@@ -258,7 +268,7 @@ var marker2SetWindow = function(number) { // This function toggles marker2's Inf
 
     infowindow.open(map, marker2);
     var wikiRequestTimeout = setTimeout(function() {
-        var NewContent = "<h1>" + model.places[2].name + "</h1>" + "<h2>" + model.places[2].windowtext + "</h2>" + "<br><h1> Related Links Via Wikipedia Not Available</h1>";
+        var NewContent = "<h1>" + model.places[2].name + "</h1>" + "<h2>" + model.places[2].windowtext + "</h2>" + "<br><h1> Related Data Via Wikipedia Not Available</h1>";
         infowindow.setContent(NewContent);
     }, 8000); // wikiRequestTimeout tells the user if there has been an error with the API.
     $.ajax({
@@ -271,11 +281,16 @@ var marker2SetWindow = function(number) { // This function toggles marker2's Inf
                 var markup = data.parse.text["*"];
                 var string = markup;
                 var string = string.replace(/<img[^>]*>/g, "");
-                var NewContent = "<h1>" + model.places[2].name + "</h1>" + "<h2>" + model.places[2].windowtext + "</h2>" + "<br><h1> Related Links Via Wikipedia</h1>" + model.places[2].windowtext + "</h2>" + string;
+                string = string.replace("/wiki", "https://en.wikipedia.org/wiki");
+                if (string.length > 300) {
+                    string.replace(/<a\b[^>]*>(.*?)<\/a>/i,"");
+                }
+                var NewContent = "<h1>" + model.places[2].name + "</h1>" + "<h2>" + model.places[2].windowtext + "</h2>" + "<br><h1> Related Data Via Wikipedia</h1>" + "</h2>" + string;
                 infowindow.setContent(NewContent);
                 clearTimeout(wikiRequestTimeout);
+                console.log(string);
             } catch (err) {
-                var NewContent = "<h1>" + model.places[2].name + "</h1>" + "<h2>" + model.places[2].windowtext + "</h2>" + "<br><h1> No related links on Wikipedia</h1>";
+                var NewContent = "<h1>" + model.places[2].name + "</h1>" + "<h2>" + model.places[2].windowtext + "</h2>" + "<br><h1> No Related Data on Wikipedia</h1>";
                 infowindow.setContent(NewContent);
             }
         })
@@ -290,7 +305,7 @@ var marker3SetWindow = function(number) { // This function toggles marker3's Inf
     });
     infowindow.open(map, marker3);
     var wikiRequestTimeout = setTimeout(function() {
-        var NewContent = "<h1>" + model.places[3].name + "</h1>" + "<h2>" + model.places[3].windowtext + "</h2>" + "<br><h1> Related Links Via Wikipedia Not Available</h1>";
+        var NewContent = "<h1>" + model.places[3].name + "</h1>" + "<h2>" + model.places[3].windowtext + "</h2>" + "<br><h1> Related Data Via Wikipedia Not Available</h1>";
         infowindow.setContent(NewContent);
     }, 8000); // wikiRequestTimeout tells the user if there has been an error with the API.
     $.ajax({
@@ -303,11 +318,16 @@ var marker3SetWindow = function(number) { // This function toggles marker3's Inf
                 var markup = data.parse.text["*"];
                 var string = markup;
                 var string = string.replace(/<img[^>]*>/g, "");
-                var NewContent = "<h1>" + model.places[3].name + "</h1>" + "<h2>" + model.places[3].windowtext + "</h2>" + "<br><h1> Related Links Via Wikipedia</h1>" + model.places[3].windowtext + "</h2>" + string;
+                string = string.replace("/wiki", "https://en.wikipedia.org/wiki");
+                if (string.length > 300) {
+                    string.replace(/<a\b[^>]*>(.*?)<\/a>/i,"");
+                }  
+                var NewContent = "<h1>" + model.places[3].name + "</h1>" + "<h2>" + model.places[3].windowtext + "</h2>" + "<br><h1> Related Data Via Wikipedia</h1>" + model.places[3].windowtext + "</h2>" + string;
                 infowindow.setContent(NewContent);
                 clearTimeout(wikiRequestTimeout);
+                console.log(string);
             } catch (err) {
-                var NewContent = "<h1>" + model.places[3].name + "</h1>" + "<h2>" + model.places[3].windowtext + "</h2>" + "<br><h1> No related links on Wikipedia</h1>";
+                var NewContent = "<h1>" + model.places[3].name + "</h1>" + "<h2>" + model.places[3].windowtext + "</h2>" + "<br><h1> No Related Data on Wikipedia</h1>";
                 infowindow.setContent(NewContent);
             }
         })
@@ -322,7 +342,7 @@ var marker4SetWindow = function(number) { // This function toggles marker4's Inf
     });
     infowindow.open(map, marker4);
     var wikiRequestTimeout = setTimeout(function() {
-        var NewContent = "<h1>" + model.places[4].name + "</h1>" + "<h2>" + model.places[4].windowtext + "</h2>" + "<br><h1> Related Links Via Wikipedia Not Available</h1>";
+        var NewContent = "<h1>" + model.places[4].name + "</h1>" + "<h2>" + model.places[4].windowtext + "</h2>" + "<br><h1> Related Data Via Wikipedia Not Available</h1>";
         infowindow.setContent(NewContent);
     }, 8000); // wikiRequestTimeout tells the user if there has been an error with the API.
     $.ajax({
@@ -335,12 +355,17 @@ var marker4SetWindow = function(number) { // This function toggles marker4's Inf
                 var markup = data.parse.text["*"];
                 var string = markup;
                 var string = string.replace(/<img[^>]*>/g, "");
-                var NewContent = "<h1>" + model.places[4].name + "</h1>" + "<h2>" + model.places[4].windowtext + "</h2>" + "<br><h1> Related Links Via Wikipedia</h1>" + model.places[4].windowtext + "</h2>" + string;
+                string = string.replace("/wiki", "https://en.wikipedia.org/wiki");
+                if (string.length > 300) {
+                    string.replace(/<a\b[^>]*>(.*?)<\/a>/i,"");
+                }
+                var NewContent = "<h1>" + model.places[4].name + "</h1>" + "<h2>" + model.places[4].windowtext + "</h2>" + "<br><h1> Related Data Via Wikipedia</h1>" + "</h2>" + string;
                 infowindow.setContent(NewContent);
                 clearTimeout(wikiRequestTimeout);
             } catch (err) {
-                var NewContent = "<h1>" + model.places[4].name + "</h1>" + "<h2>" + model.places[4].windowtext + "</h2>" + "<br><h1> No related links on Wikipedia</h1>";
+                var NewContent = "<h1>" + model.places[4].name + "</h1>" + "<h2>" + model.places[4].windowtext + "</h2>" + "<br><h1> No Related Data on Wikipedia</h1>";
                 infowindow.setContent(NewContent);
+                console.log(string);
             }
         })
     });
