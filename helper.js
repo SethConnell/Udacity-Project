@@ -63,42 +63,42 @@ var view = { // The view is a list of all the functions that change the look of 
 var ViewModel = {
     names: ko.observableArray(model.names), // names is a observable array that has the names of each location stored in it.
     searchterm: ko.observable(""), // searchterm is an observable object that saves the text from the searchbox
-    clickedItem: function (x) { // This function creates 'if clicked...' instances binding the clicks of the list items to animation effects for markers. 
+    clickedItem: function(x) { // This function creates 'if clicked...' instances binding the clicks of the list items to animation effects for markers. 
         view.resetIcons();
         if (x == "Old Home") { // if the clicked item is a certain variable, then the cooresponding markers on the map will turn pink.
             view.resetIcons();
             view.setIcon(markerarray, 0, 'http://maps.google.com/mapfiles/ms/icons/pink-dot.png');
             marker0SetWindow();
-        } 
-        if (x == "Current Home") {  // if the clicked item is a certain variable, then the cooresponding markers on the map will turn pink.
+        }
+        if (x == "Current Home") { // if the clicked item is a certain variable, then the cooresponding markers on the map will turn pink.
             view.resetIcons();
             view.setIcon(markerarray, 1, 'http://maps.google.com/mapfiles/ms/icons/pink-dot.png');
             marker1SetWindow();
         }
-        if (x == "Mexican Restraunt") {  // if the clicked item is a certain variable, then the cooresponding markers on the map will turn pink.
+        if (x == "Mexican Restraunt") { // if the clicked item is a certain variable, then the cooresponding markers on the map will turn pink.
             view.resetIcons();
             view.setIcon(markerarray, 2, 'http://maps.google.com/mapfiles/ms/icons/pink-dot.png');
             marker2SetWindow();
         }
-        if (x == "Post Office") {  // if the clicked item is a certain variable, then the cooresponding markers on the map will turn pink.
+        if (x == "Post Office") { // if the clicked item is a certain variable, then the cooresponding markers on the map will turn pink.
             view.resetIcons();
             view.setIcon(markerarray, 3, 'http://maps.google.com/mapfiles/ms/icons/pink-dot.png');
             marker3SetWindow();
         }
-        if (x == "Bank") {  // if the clicked item is a certain variable, then the cooresponding markers on the map will turn pink.
+        if (x == "Bank") { // if the clicked item is a certain variable, then the cooresponding markers on the map will turn pink.
             view.resetIcons();
             view.setIcon(markerarray, 4, 'http://maps.google.com/mapfiles/ms/icons/pink-dot.png');
-            marker4SetWindow();  
+            marker4SetWindow();
         }
     },
     searchitem: function(x) { // This function resets the list, filtering the search results to match the search term, x.
         this.reset();
         ViewModel.names.removeAll();
         setMapOnAll(null);
-        for (var i = 0; i < markerarray.length; i++) { 
+        for (var i = 0; i < markerarray.length; i++) {
             var names = String(model.places[i].name);
             var lowercasenames = names.toLowerCase();
-            if (lowercasenames.includes(x.toLowerCase())){
+            if (lowercasenames.includes(x.toLowerCase())) {
                 ViewModel.names.push(names);
                 if (i == 0) {
                     marker0.setMap(map)
@@ -115,8 +115,7 @@ var ViewModel = {
                 if (i == 4) {
                     marker4.setMap(map)
                 };
-            } else {
-            }
+            } else {}
         }
     },
     filter: function() { // this function searches the search term.

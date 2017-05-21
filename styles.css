@@ -1,44 +1,42 @@
-html, body { height: 100%; width: 100%; margin: 0; }
-
+html,
+body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+}
 header {
     color: white;
-    font-family: monospace;
-    font-size: 40px;
-    background-color: #1f2835;
+    font-size: 60px;
+    background-color: #FE7569;
     text-align: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
-
 #map {
     height: 100%;
     width: 60%;
     float: right;
 }
-
 #CatTitle {
     width: 100%;
     text-align: center;
 }
-
 #catpic {
     width: 50%;
     padding-left: 25%;
     margin: auto;
 }
-
 .catstuff {
     width: 40%;
 }
-
 #search {
     font-size: 25px;
     margin-left: 5%;
 }
-
 #searchbox {
     width: 30%;
     display: inline-block;
 }
-
 .results {
     display: block;
     width: 40%;
@@ -46,24 +44,20 @@ header {
     text-decoration-style: dotted;
     color: #1f2835
 }
-
 .buttonholder {
     width: 40%;
 }
-
 button {
-    background-color: #1f2835;
+    background-color: #FE7569;
     color: white;
     width: 20%;
     margin-left: 40%;
 }
-
 button:hover {
     background-color: white;
     color: #1f2835;
 }
-
 .results:hover {
-    background-color: #1f2835;
+    background-color: #FE7569;
     color: white;
 }
