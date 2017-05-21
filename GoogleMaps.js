@@ -210,7 +210,7 @@ var marker0SetWindow = function(number) { // This function toggles marker0's Inf
                 infowindow.setContent(NewContent);
                 clearTimeout(wikiRequestTimeout);
             } catch (err) {
-                var NewContent = "<h1>" + model.places[0].name + "</h1>" + "<h2>" + model.places[0].windowtext + "</h2>" + "<br><h1> Related Links Via Wikipedia Not Available</h1>";
+                var NewContent = "<h1>" + model.places[0].name + "</h1>" + "<h2>" + model.places[0].windowtext + "</h2>" + "<br><h1> No related links on Wikipedia</h1>";
                 infowindow.setContent(NewContent);
             };
         })
@@ -242,7 +242,7 @@ var marker1SetWindow = function(number) { // This function toggles marker1's Inf
                 infowindow.setContent(NewContent);
                 clearTimeout(wikiRequestTimeout);
             } catch (err) {
-                var NewContent = "<h1>" + model.places[1].name + "</h1>" + "<h2>" + model.places[1].windowtext + "</h2>" + "<br><h1> Related Links Via Wikipedia Not Available</h1>";
+                var NewContent = "<h1>" + model.places[1].name + "</h1>" + "<h2>" + model.places[1].windowtext + "</h2>" + "<br><h1> No related links on Wikipedia</h1>";
                 infowindow.setContent(NewContent);
             }
         })
@@ -275,7 +275,7 @@ var marker2SetWindow = function(number) { // This function toggles marker2's Inf
                 infowindow.setContent(NewContent);
                 clearTimeout(wikiRequestTimeout);
             } catch (err) {
-                var NewContent = "<h1>" + model.places[2].name + "</h1>" + "<h2>" + model.places[2].windowtext + "</h2>" + "<br><h1> Related Links Via Wikipedia Not Available</h1>";
+                var NewContent = "<h1>" + model.places[2].name + "</h1>" + "<h2>" + model.places[2].windowtext + "</h2>" + "<br><h1> No related links on Wikipedia</h1>";
                 infowindow.setContent(NewContent);
             }
         })
@@ -307,7 +307,7 @@ var marker3SetWindow = function(number) { // This function toggles marker3's Inf
                 infowindow.setContent(NewContent);
                 clearTimeout(wikiRequestTimeout);
             } catch (err) {
-                var NewContent = "<h1>" + model.places[3].name + "</h1>" + "<h2>" + model.places[3].windowtext + "</h2>" + "<br><h1> Related Links Via Wikipedia Not Available</h1>";
+                var NewContent = "<h1>" + model.places[3].name + "</h1>" + "<h2>" + model.places[3].windowtext + "</h2>" + "<br><h1> No related links on Wikipedia</h1>";
                 infowindow.setContent(NewContent);
             }
         })
@@ -339,7 +339,7 @@ var marker4SetWindow = function(number) { // This function toggles marker4's Inf
                 infowindow.setContent(NewContent);
                 clearTimeout(wikiRequestTimeout);
             } catch (err) {
-                var NewContent = "<h1>" + model.places[4].name + "</h1>" + "<h2>" + model.places[4].windowtext + "</h2>" + "<br><h1> Related Links Via Wikipedia Not Available</h1>";
+                var NewContent = "<h1>" + model.places[4].name + "</h1>" + "<h2>" + model.places[4].windowtext + "</h2>" + "<br><h1> No related links on Wikipedia</h1>";
                 infowindow.setContent(NewContent);
             }
         })
