@@ -1,4 +1,5 @@
 var map,
+    poopyitypoop,
     createMarker,
     marker0,
     marker1,
@@ -13,131 +14,96 @@ var initMap = function() { //This function creates the Google Map.
         map = new google.maps.Map(document.getElementById('map'), {
             center: model.places[2].cords,
             zoom: 13,
-            styles: [{
-                    elementType: 'geometry',
-                    stylers: [{
-                        color: '#242f3e'
-                    }]
-                },
-                {
-                    elementType: 'labels.text.stroke',
-                    stylers: [{
-                        color: '#242f3e'
-                    }]
-                },
-                {
-                    elementType: 'labels.text.fill',
-                    stylers: [{
-                        color: '#746855'
-                    }]
-                },
-                {
-                    featureType: 'administrative.locality',
-                    elementType: 'labels.text.fill',
-                    stylers: [{
-                        color: '#d59563'
-                    }]
-                },
-                {
-                    featureType: 'poi',
-                    elementType: 'labels.text.fill',
-                    stylers: [{
-                        color: '#d59563'
-                    }]
-                },
-                {
-                    featureType: 'poi.park',
-                    elementType: 'geometry',
-                    stylers: [{
-                        color: '#263c3f'
-                    }]
-                },
-                {
-                    featureType: 'poi.park',
-                    elementType: 'labels.text.fill',
-                    stylers: [{
-                        color: '#6b9a76'
-                    }]
-                },
-                {
-                    featureType: 'road',
-                    elementType: 'geometry',
-                    stylers: [{
-                        color: '#38414e'
-                    }]
-                },
-                {
-                    featureType: 'road',
-                    elementType: 'geometry.stroke',
-                    stylers: [{
-                        color: '#212a37'
-                    }]
-                },
-                {
-                    featureType: 'road',
-                    elementType: 'labels.text.fill',
-                    stylers: [{
-                        color: '#9ca5b3'
-                    }]
-                },
-                {
-                    featureType: 'road.highway',
-                    elementType: 'geometry',
-                    stylers: [{
-                        color: '#746855'
-                    }]
-                },
-                {
-                    featureType: 'road.highway',
-                    elementType: 'geometry.stroke',
-                    stylers: [{
-                        color: '#1f2835'
-                    }]
-                },
-                {
-                    featureType: 'road.highway',
-                    elementType: 'labels.text.fill',
-                    stylers: [{
-                        color: '#f3d19c'
-                    }]
-                },
-                {
-                    featureType: 'transit',
-                    elementType: 'geometry',
-                    stylers: [{
-                        color: '#2f3948'
-                    }]
-                },
-                {
-                    featureType: 'transit.station',
-                    elementType: 'labels.text.fill',
-                    stylers: [{
-                        color: '#d59563'
-                    }]
-                },
-                {
-                    featureType: 'water',
-                    elementType: 'geometry',
-                    stylers: [{
-                        color: '#17263c'
-                    }]
-                },
-                {
-                    featureType: 'water',
-                    elementType: 'labels.text.fill',
-                    stylers: [{
-                        color: '#515c6d'
-                    }]
-                },
-                {
-                    featureType: 'water',
-                    elementType: 'labels.text.stroke',
-                    stylers: [{
-                        color: '#17263c'
-                    }]
-                }
-            ]
-        });
+            styles: [ // I stole this map style from SnazzyMaps.com
+    {
+        "featureType": "administrative",
+        "elementType": "geometry.fill",
+        "stylers": [
+            {
+                "visibility": "on"
+            }
+        ]
+    },
+    {
+        "featureType": "administrative",
+        "elementType": "labels.text.fill",
+        "stylers": [
+            {
+                "color": "#444444"
+            }
+        ]
+    },
+    {
+        "featureType": "landscape",
+        "elementType": "all",
+        "stylers": [
+            {
+                "color": "#f2f2f2"
+            }
+        ]
+    },
+    {
+        "featureType": "poi",
+        "elementType": "all",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "road",
+        "elementType": "all",
+        "stylers": [
+            {
+                "saturation": -100
+            },
+            {
+                "lightness": 45
+            }
+        ]
+    },
+    {
+        "featureType": "road.highway",
+        "elementType": "all",
+        "stylers": [
+            {
+                "visibility": "simplified"
+            }
+        ]
+    },
+    {
+        "featureType": "road.arterial",
+        "elementType": "labels.icon",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "transit",
+        "elementType": "all",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "water",
+        "elementType": "all",
+        "stylers": [
+            {
+                "color": "#ffffff"
+            },
+            {
+                "visibility": "on"
+            }
+        ]
+    }
+]
+                        });
         var moreInfo = function(state) { // This function uses a State Maps API to show what state the location of a marker is in.
             var string = '<br>' + "(This location is in " + state + ")" + '<br>' + '<img id = "catpic" src="http://connell.systems/StateMapsAPI/' + state.toLowerCase() + '.jpg" alt="Sorry, this image is not available.">'
             return string;
@@ -187,7 +153,7 @@ var initMap = function() { //This function creates the Google Map.
 
 var marker0SetWindow = function(number) { // This function toggles marker0's Info Window.
     view.resetIcons();
-    marker0.setIcon('http://maps.google.com/mapfiles/ms/icons/pink-dot.png'); // Sets icon of to pink.
+    marker0.setIcon('http://maps.google.com/mapfiles/ms/icons/blue-dot.png'); // Sets icon of to blue.
     var infowindow = new google.maps.InfoWindow({
         content: "<img style = 'width: 250px; height: 200px' src='loading.gif'>"
     });
@@ -205,15 +171,11 @@ var marker0SetWindow = function(number) { // This function toggles marker0's Inf
             try {
                 var markup = data.parse.text["*"];
                 var string = markup;
-                var string = string.replace(/<img[^>]*>/g, "");
-                string = string.replace("/wiki", "https://en.wikipedia.org/wiki");
-                if (string.length > 300) {
-                    string.replace(/<a\b[^>]*>(.*?)<\/a>/i,"");
-                }
+                string = string.replace(/<img[^>]*>/g, "");
+                string = string.replaceAll("/wiki/", "https://en.wikipedia.org/wiki/");
                 var NewContent = "<h1>" + model.places[0].name + "</h1>" + "<h2>" + model.places[0].windowtext + "</h2>" + "<br><h1> Related Data Via Wikipedia</h1>" + "</h2>" + string;
                 infowindow.setContent(NewContent);
                 clearTimeout(wikiRequestTimeout);
-                console.log(string);
             } catch (err) {
                 var NewContent = "<h1>" + model.places[0].name + "</h1>" + "<h2>" + model.places[0].windowtext + "</h2>" + "<br><h1> No Related Data on Wikipedia</h1>";
                 infowindow.setContent(NewContent);
@@ -224,7 +186,7 @@ var marker0SetWindow = function(number) { // This function toggles marker0's Inf
 
 var marker1SetWindow = function(number) { // This function toggles marker1's Info Window.
     view.resetIcons();
-    marker1.setIcon('http://maps.google.com/mapfiles/ms/icons/pink-dot.png');
+    marker1.setIcon('http://maps.google.com/mapfiles/ms/icons/blue-dot.png');
     var infowindow = new google.maps.InfoWindow({
         content: "<img style = 'width: 200px; height: 200px' src='loading.gif'>"
     });
@@ -243,10 +205,7 @@ var marker1SetWindow = function(number) { // This function toggles marker1's Inf
                 var markup = data.parse.text["*"];
                 var string = markup;
                 var string = string.replace(/<img[^>]*>/g, "");
-                string = string.replace("/wiki", "https://en.wikipedia.org/wiki");
-                if (string.length > 300) {
-                    string.replace(/<a\b[^>]*>(.*?)<\/a>/i,"");
-                }
+                string = string.replaceAll("/wiki", "https://en.wikipedia.org/wiki");
                 var NewContent = "<h1>" + model.places[1].name + "</h1>" + "<h2>" + model.places[1].windowtext + "</h2>" + "<br><h1> Related Data Via Wikipedia</h1>" + "</h2>" + string;
                 infowindow.setContent(NewContent);
                 clearTimeout(wikiRequestTimeout);
@@ -261,7 +220,7 @@ var marker1SetWindow = function(number) { // This function toggles marker1's Inf
 
 var marker2SetWindow = function(number) { // This function toggles marker2's Info Window.
     view.resetIcons();
-    marker2.setIcon('http://maps.google.com/mapfiles/ms/icons/pink-dot.png');
+    marker2.setIcon('http://maps.google.com/mapfiles/ms/icons/blue-dot.png');
     var infowindow = new google.maps.InfoWindow({
         content: "<img style = 'width: 250px; height: 200px' src='loading.gif'>"
     });
@@ -281,10 +240,7 @@ var marker2SetWindow = function(number) { // This function toggles marker2's Inf
                 var markup = data.parse.text["*"];
                 var string = markup;
                 var string = string.replace(/<img[^>]*>/g, "");
-                string = string.replace("/wiki", "https://en.wikipedia.org/wiki");
-                if (string.length > 300) {
-                    string.replace(/<a\b[^>]*>(.*?)<\/a>/i,"");
-                }
+                string = string.replaceAll("/wiki", "https://en.wikipedia.org/wiki");
                 var NewContent = "<h1>" + model.places[2].name + "</h1>" + "<h2>" + model.places[2].windowtext + "</h2>" + "<br><h1> Related Data Via Wikipedia</h1>" + "</h2>" + string;
                 infowindow.setContent(NewContent);
                 clearTimeout(wikiRequestTimeout);
@@ -299,7 +255,7 @@ var marker2SetWindow = function(number) { // This function toggles marker2's Inf
 
 var marker3SetWindow = function(number) { // This function toggles marker3's Info Window.
     view.resetIcons();
-    marker3.setIcon('http://maps.google.com/mapfiles/ms/icons/pink-dot.png');
+    marker3.setIcon('http://maps.google.com/mapfiles/ms/icons/blue-dot.png');
     var infowindow = new google.maps.InfoWindow({
         content: "<img style = 'width: 250px; height: 200px' src='loading.gif'>"
     });
@@ -318,14 +274,10 @@ var marker3SetWindow = function(number) { // This function toggles marker3's Inf
                 var markup = data.parse.text["*"];
                 var string = markup;
                 var string = string.replace(/<img[^>]*>/g, "");
-                string = string.replace("/wiki", "https://en.wikipedia.org/wiki");
-                if (string.length > 300) {
-                    string.replace(/<a\b[^>]*>(.*?)<\/a>/i,"");
-                }  
+                string = string.replaceAll("/wiki", "https://en.wikipedia.org/wiki");
                 var NewContent = "<h1>" + model.places[3].name + "</h1>" + "<h2>" + model.places[3].windowtext + "</h2>" + "<br><h1> Related Data Via Wikipedia</h1>" + model.places[3].windowtext + "</h2>" + string;
                 infowindow.setContent(NewContent);
                 clearTimeout(wikiRequestTimeout);
-                console.log(string);
             } catch (err) {
                 var NewContent = "<h1>" + model.places[3].name + "</h1>" + "<h2>" + model.places[3].windowtext + "</h2>" + "<br><h1> No Related Data on Wikipedia</h1>";
                 infowindow.setContent(NewContent);
@@ -336,7 +288,7 @@ var marker3SetWindow = function(number) { // This function toggles marker3's Inf
 
 var marker4SetWindow = function(number) { // This function toggles marker4's Info Window.
     view.resetIcons();
-    marker4.setIcon('http://maps.google.com/mapfiles/ms/icons/pink-dot.png');
+    marker4.setIcon('http://maps.google.com/mapfiles/ms/icons/blue-dot.png');
     infowindow = new google.maps.InfoWindow({
         content: "<img style = 'width: 250px; height: 200px' src='loading.gif'>"
     });
@@ -354,18 +306,14 @@ var marker4SetWindow = function(number) { // This function toggles marker4's Inf
             try {
                 var markup = data.parse.text["*"];
                 var string = markup;
-                var string = string.replace(/<img[^>]*>/g, "");
-                string = string.replace("/wiki", "https://en.wikipedia.org/wiki");
-                if (string.length > 300) {
-                    string.replace(/<a\b[^>]*>(.*?)<\/a>/i,"");
-                }
+                string = string.replaceAll("/wiki", "https://en.wikipedia.org/wiki");
+                string = string.replace(/<img[^>]*>/g, "");
                 var NewContent = "<h1>" + model.places[4].name + "</h1>" + "<h2>" + model.places[4].windowtext + "</h2>" + "<br><h1> Related Data Via Wikipedia</h1>" + "</h2>" + string;
                 infowindow.setContent(NewContent);
                 clearTimeout(wikiRequestTimeout);
             } catch (err) {
                 var NewContent = "<h1>" + model.places[4].name + "</h1>" + "<h2>" + model.places[4].windowtext + "</h2>" + "<br><h1> No Related Data on Wikipedia</h1>";
                 infowindow.setContent(NewContent);
-                console.log(string);
             }
         })
     });
@@ -381,4 +329,9 @@ function setMapOnAll(map) { // This function takes all markers off the map.
 
 function crap() {
     alert("Google Maps ain't workin' so well. Sorry about that.");
-}
+};
+
+String.prototype.replaceAll = function(search, replacement) { // This function replaces all instances of search with replacement. It's used by each ajax request to fix the broken Wikipedia links.
+    var target = this;
+    return target.split(search).join(replacement);
+};
